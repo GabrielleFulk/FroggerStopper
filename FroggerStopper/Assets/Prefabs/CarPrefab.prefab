@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4836356483446890850}
   - component: {fileID: 8379052299782525908}
   - component: {fileID: 1791725538750765034}
+  - component: {fileID: 2077673074515236345}
   m_Layer: 0
   m_Name: CarPrefab
   m_TagString: Car
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.99215686, g: 0.05490193, b: 0.83424735, a: 1}
   m_FlipX: 0
@@ -133,7 +134,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!114 &1791725538750765034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,3 +148,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carSpeed: 5
+--- !u!114 &2077673074515236345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7472173041652095230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a41c75063144c040b5ec3bd1ad1bfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
