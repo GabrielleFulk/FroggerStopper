@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CarStopper
   - Car
+  - slot
+  - CarStopper
   layers:
   - Default
   - TransparentFX
