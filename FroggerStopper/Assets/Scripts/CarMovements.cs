@@ -24,16 +24,11 @@ public class CarMovements : MonoBehaviour
         rb.velocity = new Vector2(-carSpeed, 0);
     }
 
-    private void TriggerCarStop()
-    {
-        rb.velocity = new Vector2(0,0);
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "CarStopper") 
         {
-            TriggerCarStop();
+            Destroy(gameObject);
         }
     }
 }
