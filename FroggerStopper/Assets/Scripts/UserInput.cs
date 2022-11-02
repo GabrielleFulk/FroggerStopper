@@ -37,5 +37,6 @@ public class UserInput : MonoBehaviour
     public void SpawnCar()
     {
         Instantiate(car, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f), Quaternion.identity);
+        Debug.Log("spawning car");
     }
 }
