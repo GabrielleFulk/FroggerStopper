@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8379052299782525908}
   - component: {fileID: 1791725538750765034}
   - component: {fileID: 2077673074515236345}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: CarPrefab
   m_TagString: Car
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 6
 --- !u!114 &1791725538750765034
 MonoBehaviour:
   m_ObjectHideFlags: 0

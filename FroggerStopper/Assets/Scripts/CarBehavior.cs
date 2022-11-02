@@ -25,14 +25,10 @@ public class CarBehavior : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Collide");
         if (collider.gameObject.tag == "slot")
         {
             snap = true;
             slot = collider;
-            Debug.Log("Collide 2");
         }
-
-
     }
 }
