@@ -13,21 +13,25 @@ public class SpawnRandom : MonoBehaviour
     void Start()
     {
          randomNumber = Random.Range(0, 1000);
-         Debug.Log(randomNumber);
+         StartCoroutine(Frogger());
     }
 
-    void Update()
-    {
-        if (randomNumber <= 40)
+    IEnumerator Frogger()
+    {   
+        while(true)
+        {
+            randomNumber = Random.Range(0, 10);
+            if (randomNumber <= 2)
         {
             int randEnemy = Random.Range(0, enemyPrefabs.Length);
             int randSpawnPoint = Random.Range(0, spawnPoints.Length);
 
             Instantiate(enemyPrefabs[0], spawnPoints[randSpawnPoint].position, transform.rotation);
         }
-        
-        randomNumber = Random.Range(0, 1000);
-        Debug.Log("Trial:" + randomNumber);
+
+            yield return new WaitForSeconds(2); 
+
+        }
     }
 
     
