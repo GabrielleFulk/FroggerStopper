@@ -1,50 +1,91 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FrogMovement : MonoBehaviour
 {
     // This will be the enemy Avatar
     public GameObject frogger;
+    private Rigidbody2D rb;
+    public GameObject GameController;
     // Start is called before the first frame update
-    private float speed = 0.005f;
-    private float enemyTimeScale = 0.70f;
-    public bool MoveDown;
+    
+    public bool moving;
+    public float FrogSpeed;
 
-     void Update() {
- 
-        Frogger();
-         
+
+    void Start()
+    {
+        
+        moving = true;
+        rb = GetComponent<Rigidbody2D>();
+        GameController = GameObject.Find("GameController");
+        //StartCoroutine(Frogger());
     }
 
-    public void Frogger()
+    void Update()
     {
-        Vector3 transformDown = transform.up * 1.0f;
-        Vector3 transformPause = transform.up * 0.0f;
-        for (int index = 0; index < 100; index++)
-        {
-            for (int j = 0; j < 1000; j++)
-            {
-
-              if((j == 80))
-                {
-                    transform.Translate(transformDown * speed * enemyTimeScale); 
-                    Debug.Log("J:" + j);
-                }
-            else 
-            {
-                transform.Translate(transformPause * 0.0f * enemyTimeScale);
-            }
         
-            }
+
+    }
+    public void TriggerFrogStart()
+    {
+        
+        StartCoroutine(Frogger());
+        StartCoroutine(Lost());
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Car" && moving)
+        {
+            moving = false;
+            GameController.GetComponent<MainGame>().RemoveFrog(gameObject);
+            
+            GetComponent<Renderer>().material.color = Color.red;
+            
+            
+           
+
+        }
+    }
+
+    public IEnumerator Frogger()
+    {
+
+        while (moving)
+        {
+            Debug.Log("On");
+
+            rb.velocity = new Vector2(0, FrogSpeed);
+            yield return new WaitForSeconds(0.8f);
+            rb.velocity = new Vector2(0, 0);
+            yield return new WaitForSeconds(1);
+            Debug.Log("off");
+
+
         }
         
+        
+            yield return null;
+        
+
     }
-
-
-
-
-
-} 
-
-
+    private IEnumerator Lost()
+    {
+        
+        while (true)
+        {
+            if (gameObject.transform.position.y <= 5)
+            {
+                yield return new WaitForSeconds(.5f);
+            }
+            else {
+            
+                SceneManager.LoadScene("LostScene");// FIX AND REPLACE WITH RESTET UI
+                yield return null;
+            }
+        }
+    }
+}
