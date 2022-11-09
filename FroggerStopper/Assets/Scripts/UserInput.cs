@@ -16,6 +16,7 @@ public class UserInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetMouseButton(0))
         {
             move = true;
@@ -27,7 +28,7 @@ public class UserInput : MonoBehaviour
                 hit.collider.gameObject.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, hit.collider.gameObject.transform.position.z);
             }
         }
-        else if (Input.GetMouseButtonUp(0)){ move = false; }
+        else if (Input.GetMouseButtonUp(0)) { move = false; }
     }
 
     public void setMove(bool c) { move = c; }
@@ -37,5 +38,6 @@ public class UserInput : MonoBehaviour
     public void SpawnCar()
     {
         Instantiate(car, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f), Quaternion.identity);
+        Debug.Log("spawning car");
     }
 }

@@ -17,22 +17,21 @@ public class CarBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (snap && !Input.GetMouseButton(0))
+       
+        
+        if(snap && !Input.GetMouseButton(0))
         {
             transform.position = slot.transform.position;
-            snap = false;   
+            snap = false;
         }
+        
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Collide");
         if (collider.gameObject.tag == "slot")
         {
             snap = true;
             slot = collider;
-            Debug.Log("Collide 2");
         }
-
-
     }
 }
