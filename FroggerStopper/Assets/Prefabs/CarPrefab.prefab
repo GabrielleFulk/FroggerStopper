@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4836356483446890850}
   - component: {fileID: 8379052299782525908}
   - component: {fileID: 1791725538750765034}
-  - component: {fileID: 2077673074515236345}
   m_Layer: 3
   m_Name: CarPrefab
   m_TagString: Car
@@ -30,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7472173041652095230}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.1621, y: 2.61, z: 0}
-  m_LocalScale: {x: 1.3787715, y: 0.7587, z: 1}
+  m_LocalScale: {x: 1.9016, y: 1.9016, z: 1.9016}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.99215686, g: 0.05490193, b: 0.83424735, a: 1}
+  m_Sprite: {fileID: 21300000, guid: de353caf8bd0988488f75d6a1ccf3319, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,18 +100,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.000000044703484, y: -0.0049726963}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.96, y: 0.7}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.960219, y: 0.59224343}
   m_EdgeRadius: 0
 --- !u!50 &8379052299782525908
 Rigidbody2D:
@@ -147,16 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5a1d4391b33c94d8a09d654144c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carSpeed: 2
---- !u!114 &2077673074515236345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7472173041652095230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a41c75063144c040b5ec3bd1ad1bfc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  carSpeed: 1
+  points: 5
+  carImage: {fileID: 0}
