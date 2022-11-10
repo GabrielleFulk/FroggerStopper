@@ -33,6 +33,7 @@ public class CarMovements : MonoBehaviour
     public void TriggerCarStart()
     {
         rb.velocity = new Vector2(-carSpeed, 0);
+        GetComponent<CarBehavior>().setGo(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
