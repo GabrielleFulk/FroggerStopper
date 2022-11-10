@@ -7,6 +7,9 @@ TagManager:
   - Car
   - slot
   - CarStopper
+  - RedCarBtn
+  - PurpleCarBtn
+  - DumpTruckBtn
   layers:
   - Default
   - TransparentFX
