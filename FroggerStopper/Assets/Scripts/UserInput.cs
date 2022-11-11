@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class UserInput : MonoBehaviour
 {
-    bool move = true;
     public GameObject car;
     public Sprite purpleCar;
     public Sprite dumpTruck;
@@ -26,12 +25,10 @@ public class UserInput : MonoBehaviour
             if (hit && hit.collider.CompareTag("Car"))
             {
                 Debug.Log("hit");
-                hit.collider.gameObject.GetComponent<CarBehavior>().setMove(!hit.collider.gameObject.GetComponent<CarBehavior>().getMove());
+                hit.collider.gameObject.GetComponent<CarMovements>().setMove(!hit.collider.gameObject.GetComponent<CarMovements>().getMove());
             }
         }
     }
-
-
 
     public void SpawnRedCar()
     {        
