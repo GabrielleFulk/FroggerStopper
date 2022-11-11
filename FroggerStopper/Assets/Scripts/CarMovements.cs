@@ -49,11 +49,12 @@ public class CarMovements : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collider.gameObject.tag == "slot")
+        if (collider.gameObject.tag == "slot" && !collider.GetComponent<SlotScript>().getTaken())
         {
             snap = true;
             slot = collider;
             Debug.Log("ontrigger enter car");
+            collider.GetComponent<SlotScript>().setTaken(true);
         }
     }
 
@@ -64,10 +65,12 @@ public class CarMovements : MonoBehaviour
             snap = false;
             slot = null;
             Debug.Log("ontrigger Exit car");
+            collision.GetComponent<SlotScript>().setTaken(false);
         }
     }
 
     public void setMove(bool c) { move = c; }
 
     public bool getMove() { return move; }
+    public bool getGo() { return go; }
 }
