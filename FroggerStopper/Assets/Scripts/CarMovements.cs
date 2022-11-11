@@ -7,11 +7,15 @@ public class CarMovements : MonoBehaviour
     public float carSpeed;
     private Rigidbody2D rb;
     private GameObject carStopper;
+  
+   
 
     void Start()
     {
+       
         rb = GetComponent<Rigidbody2D>();
         carStopper = GameObject.Find("CarStopper");
+        
     }
 
     void Update()

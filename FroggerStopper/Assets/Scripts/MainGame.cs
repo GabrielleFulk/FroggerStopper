@@ -42,6 +42,7 @@ public class MainGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         AliveFrogs = new List<GameObject>() { Frog1, Frog2, Frog3,  Frog5 }; //FIXME
         FrogGroups = new Queue<string>[] { Frogs1, Frogs2, Frogs3, Frogs4, Frogs5, Frogs6 };
         Lanes = new List<GameObject>[] { Lane1, Lane2, Lane3, Lane4, Lane5, Lane6 };
@@ -59,10 +60,20 @@ public class MainGame : MonoBehaviour
             SceneManager.LoadScene("WinScene");
         }
         }
+    //TODO WRITE CODE TO KEEP TRACK IF ITS IN THE QUEUE OR NOT
     public void RunGame() //Willl call all the necisarry functions to run the game
     {
         
         //myObject.GetComponent<MyScript>().MyFunction(); FIXME
+    }
+    public void AddCar(GameObject car)
+    {
+        Lane1.Append(car);
+
+    }
+    public void RemoveCar(GameObject car)
+    {
+        Lane1.Remove(car);
     }
     IEnumerator ReleaseFromArray(List<GameObject> arr)
     {
