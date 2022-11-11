@@ -8,7 +8,6 @@ public class ButtonController : MonoBehaviour
 {
     private CarMovements[] allCarScripts;
     private FrogMovement[] allFrogScripts;
-    private CarBehavior[] allCarBehavior;
     public Button PlayButton;
     public Button CarButton;
 
