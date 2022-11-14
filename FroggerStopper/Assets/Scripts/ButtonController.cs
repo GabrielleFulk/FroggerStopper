@@ -11,6 +11,9 @@ public class ButtonController : MonoBehaviour
     public Button PlayButton;
     public Button CarButton;
 
+    public GameObject winPanel;
+    public GameObject losePanel;
+
     void Start()
     {
     }
@@ -44,5 +47,15 @@ public class ButtonController : MonoBehaviour
     public void BackButtonClicked()
     {
         SceneManager.LoadScene(0); // load title scene
+    }
+
+    public void ShowWinPanel()
+    {
+        winPanel.SetActive(true);
+    }
+
+    public void ShowLosePanel()
+    {
+        losePanel.SetActive(true);
     }
 }
