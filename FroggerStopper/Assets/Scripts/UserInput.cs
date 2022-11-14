@@ -26,6 +26,18 @@ public class UserInput : MonoBehaviour
             {
                 Debug.Log("hit");
                 hit.collider.gameObject.GetComponent<CarMovements>().setMove(!hit.collider.gameObject.GetComponent<CarMovements>().getMove());
+                if (hit.collider.gameObject.GetComponent<CarMovements>().getSnap() && !hit.collider.gameObject.GetComponent<CarMovements>().getMove() && !hit.collider.gameObject.GetComponent<CarMovements>().getGo())
+                {
+                    hit.collider.gameObject.transform.position = hit.collider.gameObject.GetComponent<CarMovements>().getSlot().transform.position;
+                    hit.collider.gameObject.GetComponent<CarMovements>().getSlot().GetComponent<SlotScript>().setTaken(true);
+                    Debug.Log("test");
+                }
+                if (!hit.collider.gameObject.GetComponent<CarMovements>().getSnap() && !hit.collider.gameObject.GetComponent<CarMovements>().getMove() && !hit.collider.gameObject.GetComponent<CarMovements>().getGo()) 
+                {
+                    Debug.Log("Destroy");
+                    Destroy(hit.collider.gameObject);
+                }
+                
             }
         }
     }
