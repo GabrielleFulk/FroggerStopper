@@ -21,12 +21,12 @@ public class SpawnRandom : MonoBehaviour
         while(true)
         {
             randomNumber = Random.Range(0, 10);
-            if (randomNumber <= 2)
+            if (randomNumber <= 3)
         {
             int randEnemy = Random.Range(0, enemyPrefabs.Length);
             int randSpawnPoint = Random.Range(0, spawnPoints.Length);
 
-            Instantiate(enemyPrefabs[0], spawnPoints[randSpawnPoint].position, transform.rotation);
+            Instantiate(enemyPrefabs[randEnemy], spawnPoints[randSpawnPoint].position, Quaternion.identity);
         }
 
             yield return new WaitForSeconds(2); 
