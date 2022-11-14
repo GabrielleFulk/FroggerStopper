@@ -10,9 +10,11 @@ public class FrogMovement : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject GameController;
     // Start is called before the first frame update
+    public Animator animator;
     
-    public bool moving;
-    public float FrogSpeed;
+    private bool moving = true;
+    //private float FrogSpeed = 0.005f;
+    private int FrogSpeed = 1;
 
 
     void Start()
@@ -21,12 +23,24 @@ public class FrogMovement : MonoBehaviour
         moving = true;
         rb = GetComponent<Rigidbody2D>();
         GameController = GameObject.Find("GameController");
-        //StartCoroutine(Frogger());
+        StartCoroutine(Frogger());
     }
 
     void Update()
     {
-        
+        if (moving == true)
+        {   
+            animator.SetBool("Jump", true);
+            Debug.Log("It's true");
+
+        }
+
+        if (moving == false)
+        {
+            animator.SetBool("Jump", false);
+            Debug.Log("It's false");
+
+        }
 
     }
     public void TriggerFrogStart()
@@ -41,13 +55,10 @@ public class FrogMovement : MonoBehaviour
         if (collision.gameObject.tag == "Car" && moving)
         {
             moving = false;
-            GameController.GetComponent<MainGame>().RemoveFrog(gameObject);
-            
+            //GameController.GetComponent<MainGame>().RemoveFrog(frogger);
+            animator.SetBool("Jump", false);
             GetComponent<Renderer>().material.color = Color.red;
-            
-            
-           
-
+            Destroy(gameObject);
         }
     }
 
