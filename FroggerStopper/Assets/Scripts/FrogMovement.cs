@@ -23,7 +23,6 @@ public class FrogMovement : MonoBehaviour
         moving = true;
         rb = GetComponent<Rigidbody2D>();
         GameController = GameObject.Find("GameController");
-        StartCoroutine(Frogger());
     }
 
     void Update()
@@ -45,7 +44,6 @@ public class FrogMovement : MonoBehaviour
     }
     public void TriggerFrogStart()
     {
-        
         StartCoroutine(Frogger());
         StartCoroutine(Lost());
     }
