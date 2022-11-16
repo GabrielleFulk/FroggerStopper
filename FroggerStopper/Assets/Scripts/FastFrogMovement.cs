@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FrogMovement : MonoBehaviour
+public class FastFrogMovement : MonoBehaviour
 {
     // This will be the enemy Avatar
     public GameObject frogger;
@@ -12,7 +12,7 @@ public class FrogMovement : MonoBehaviour
     // Start is called before the first frame update
     public Animator animator;
     
-    private bool moving;
+    private bool moving = true;
     //private float FrogSpeed = 0.005f;
     private int FrogSpeed = 1;
 
@@ -20,10 +20,10 @@ public class FrogMovement : MonoBehaviour
     void Start()
     {
         
-        moving = false;
+        moving = true;
         rb = GetComponent<Rigidbody2D>();
         GameController = GameObject.Find("GameController");
-
+        StartCoroutine(Frogger());
     }
 
     void Update()
@@ -45,7 +45,7 @@ public class FrogMovement : MonoBehaviour
     }
     public void TriggerFrogStart()
     {
-        moving = true;
+        
         StartCoroutine(Frogger());
         StartCoroutine(Lost());
     }
@@ -70,9 +70,9 @@ public class FrogMovement : MonoBehaviour
             Debug.Log("On");
 
             rb.velocity = new Vector2(0, FrogSpeed);
-            yield return new WaitForSeconds(1.3f);
+            yield return new WaitForSeconds(1.6f);
             rb.velocity = new Vector2(0, 0);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2);
             Debug.Log("off");
 
 
