@@ -50,7 +50,7 @@ public class FrogMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Car" && moving)
+        if (collision.gameObject.tag == "Car" && moving && collision.GetComponent<CarMovements>().getGo())
         {
             moving = false;
             //GameController.GetComponent<MainGame>().RemoveFrog(frogger);
