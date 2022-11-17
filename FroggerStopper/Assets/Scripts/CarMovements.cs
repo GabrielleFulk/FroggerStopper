@@ -16,7 +16,12 @@ public class CarMovements : MonoBehaviour
     private Collider2D slot;
     private bool move;
     private bool go;
+
+    public bool awake;
+    private SpriteRenderer sprite; 
+
     private bool snapped;
+
 
     void Start()
     {
@@ -25,16 +30,33 @@ public class CarMovements : MonoBehaviour
         move = true;
         snap = false;
         go = false;
+
+        sprite = GetComponent<SpriteRenderer>();
+
         snapped = false;
+
     }
 
     void Update()
     {
+
+        if (awake){
+            sprite.color = new Color(1f, 1f, 1f, 1f);
+            sprite.transform.localScale = new Vector3(1.9f, 1.9f, 1.9f);
+        }
+        else
+        {
+            sprite.color = new Color(1f, 1f, 1f, .8f);
+            sprite.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
+        }
+        
         if (move) 
         {
             if (slot != null) slot.GetComponent<SlotScript>().setTaken(false);
             transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z); 
         }
+
 
     }
 
@@ -46,7 +68,11 @@ public class CarMovements : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+
+        if (collider.gameObject.tag == "CarStopper")
+
         if (collider.gameObject.tag == "CarStopper" && go) 
+
         {
             Destroy(gameObject);
         }
@@ -85,6 +111,8 @@ public class CarMovements : MonoBehaviour
     public void setMove(bool c) { move = c; }
 
     public bool getMove() { return move; }
+
+
     public bool getGo() { return go; }
     
     public bool getSnap() { return snap; }
@@ -96,3 +124,4 @@ public class CarMovements : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
