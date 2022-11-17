@@ -46,10 +46,13 @@ public class MainGame : MonoBehaviour
     public List<GameObject> AliveFrogs;
 
 
+
     public GameObject Car1; // FIXME
     public GameObject Car2;
     public GameObject Car3;
 
+    public GameObject winPanel;
+    public GameObject losePanel;
 
   
 
@@ -71,14 +74,17 @@ public class MainGame : MonoBehaviour
         Debug.Log(Lanes[1]);
 
     }
+
     public void RemoveFrog(GameObject theFrog){ //FIXME
         Debug.Log(theFrog.name);
         AliveFrogs.Remove(theFrog);
+        Debug.Log(AliveFrogs.Count);
         if (AliveFrogs.Count == 0)
         {
-            SceneManager.LoadScene("WinScene");
+            winPanel.SetActive(true);
         }
-        }
+    }
+
     public void RunGame() //Willl call all the necisarry functions to run the game
     { 
 
@@ -150,7 +156,10 @@ public class MainGame : MonoBehaviour
       
     }
 
-
+    public void showLosePanel()
+    {
+        losePanel.SetActive(true);
+    }
 
 }
 
