@@ -66,7 +66,7 @@ public class CarMovements : MonoBehaviour
         {
             snap = true;
             slot = collision;
-            Debug.Log("ontrigger enter car");
+            // Debug.Log("ontrigger enter car");
             
         }
     }
@@ -77,7 +77,7 @@ public class CarMovements : MonoBehaviour
         {
             snap = false;
             slot = null;
-            Debug.Log("ontrigger Exit car");
+            // Debug.Log("ontrigger Exit car");
             //collision.GetComponent<SlotScript>().setTaken(false);
         }
     }
