@@ -16,6 +16,8 @@ public class CarMovements : MonoBehaviour
     private Collider2D slot;
     private bool move;
     private bool go;
+    public bool awake;
+    private SpriteRenderer sprite; 
 
     void Start()
     {
@@ -24,16 +26,28 @@ public class CarMovements : MonoBehaviour
         move = true;
         snap = false;
         go = false;
+        sprite = GetComponent<SpriteRenderer>();
+        
     }
 
     void Update()
     {
-        if (snap && !move && !go)
-        {
-            transform.position = slot.transform.position;
+        if (awake){
+            sprite.color = new Color(1f, 1f, 1f, 1f);
+            sprite.transform.localScale = new Vector3(1.9f, 1.9f, 1.9f);
         }
-        if (!move & !snap && !go) Destroy(gameObject);
-        if (move) transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z);
+        else
+        {
+            sprite.color = new Color(1f, 1f, 1f, .8f);
+            sprite.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
+        }
+        //if (snap && !move && !go)
+        //{
+          //  transform.position = slot.transform.position;
+        //}
+       // if (!move & !snap && !go) Destroy(gameObject);
+        //if (move) transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z);
     }
 
     public void TriggerCarStart()
@@ -44,7 +58,7 @@ public class CarMovements : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "CarStopper") 
+        if (collider.gameObject.tag == "CarStopper")
         {
             Destroy(gameObject);
         }
