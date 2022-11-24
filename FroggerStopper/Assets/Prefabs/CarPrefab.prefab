@@ -149,3 +149,4 @@ MonoBehaviour:
   carSpeed: 2
   points: 3
   carImage: {fileID: 0}
+  awake: 0

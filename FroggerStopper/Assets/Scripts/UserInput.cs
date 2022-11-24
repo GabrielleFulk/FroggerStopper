@@ -10,6 +10,7 @@ public class UserInput : MonoBehaviour
     public Sprite purpleCar;
     public Sprite dumpTruck;
     public Sprite redCar;
+    public GameObject controller;
 
     void Start()
     {
@@ -26,10 +27,18 @@ public class UserInput : MonoBehaviour
             {
                 Debug.Log("hit");
                 hit.collider.gameObject.GetComponent<CarMovements>().setMove(!hit.collider.gameObject.GetComponent<CarMovements>().getMove());
+                if(hit.collider.gameObject.GetComponent<CarMovements>().getSnap() && hit.collider.gameObject.GetComponent<CarMovements>().getMove()){
+                    Debug.Log("free");
+                    GameObject theslot = hit.collider.gameObject.GetComponent<CarMovements>().getSlot().gameObject;
+                    controller.GetComponent<MainGame>().RemoveCar(theslot);
+                }
                 if (hit.collider.gameObject.GetComponent<CarMovements>().getSnap() && !hit.collider.gameObject.GetComponent<CarMovements>().getMove() && !hit.collider.gameObject.GetComponent<CarMovements>().getGo())
                 {
                     hit.collider.gameObject.transform.position = hit.collider.gameObject.GetComponent<CarMovements>().getSlot().transform.position;
+                    GameObject theslot = hit.collider.gameObject.GetComponent<CarMovements>().getSlot().gameObject;
+                   
                     hit.collider.gameObject.GetComponent<CarMovements>().getSlot().GetComponent<SlotScript>().setTaken(true);
+                    controller.GetComponent<MainGame>().AddCar(theslot, hit.collider.gameObject);
                     Debug.Log("test");
                 }
                 if (!hit.collider.gameObject.GetComponent<CarMovements>().getSnap() && !hit.collider.gameObject.GetComponent<CarMovements>().getMove() && !hit.collider.gameObject.GetComponent<CarMovements>().getGo()) 

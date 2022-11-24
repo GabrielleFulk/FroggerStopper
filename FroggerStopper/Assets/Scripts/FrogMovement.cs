@@ -69,7 +69,7 @@ public class FrogMovement : MonoBehaviour
             // Debug.Log("On");
 
             rb.velocity = new Vector2(0, FrogSpeed);
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(2.0f);
             rb.velocity = new Vector2(0, 0);
             yield return new WaitForSeconds(1);
             // Debug.Log("off");

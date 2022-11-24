@@ -62,6 +62,7 @@ public class CarMovements : MonoBehaviour
 
     public void TriggerCarStart()
     {
+        awake= true;
         rb.velocity = new Vector2(-carSpeed, 0);
         go = true;
     }
