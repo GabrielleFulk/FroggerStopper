@@ -280,25 +280,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frog2 (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 5982104693555659258, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
-      propertyPath: m_TagString
-      value: Frog
-      objectReference: {fileID: 0}
-    - target: {fileID: 5982104693555659262, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
-      propertyPath: losePanel
-      value: 
-      objectReference: {fileID: 1278437876}
     - target: {fileID: 5982104693555659263, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
       propertyPath: m_RootOrder
       value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 5982104693555659263, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5982104693555659263, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5982104693555659263, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
       propertyPath: m_LocalPosition.x
@@ -310,7 +294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5982104693555659263, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5982104693555659263, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1663,7 +1647,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487747900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -6}
   m_LocalScale: {x: 0.9998999, y: 0.9998999, z: 0.9998999}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1676,7 +1660,7 @@ RectTransform:
   - {fileID: 836684346}
   - {fileID: 941173724}
   m_Father: {fileID: 1257185016}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1873,25 +1857,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frog2 (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5982104693555659258, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
-      propertyPath: m_TagString
-      value: Frog
-      objectReference: {fileID: 0}
-    - target: {fileID: 5982104693555659262, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
-      propertyPath: losePanel
-      value: 
-      objectReference: {fileID: 1278437876}
     - target: {fileID: 5982104693555659263, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
       propertyPath: m_RootOrder
       value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5982104693555659263, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5982104693555659263, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5982104693555659263, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3054,7 +3022,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4036,7 +4004,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1257185016
 RectTransform:
@@ -4062,8 +4030,8 @@ RectTransform:
   - {fileID: 1712760180}
   - {fileID: 1170201163}
   - {fileID: 2052942299}
-  - {fileID: 487747901}
   - {fileID: 1278437877}
+  - {fileID: 487747901}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4096,7 +4064,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278437876}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -6}
   m_LocalScale: {x: 0.9998999, y: 0.9998999, z: 0.9998999}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4109,7 +4077,7 @@ RectTransform:
   - {fileID: 428074546}
   - {fileID: 962399496}
   m_Father: {fileID: 1257185016}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4558,7 +4526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20469916, g: 0.36675364, b: 0.7075472, a: 0.8627451}
+  m_Color: {r: 0.43137258, g: 0.6522831, b: 0.8666667, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4902,7 +4870,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -6011,7 +5979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.20469916, g: 0.36675364, b: 0.7075472, a: 0.8627451}
+  m_Color: {r: 0.43137255, g: 0.6509804, b: 0.8666667, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
