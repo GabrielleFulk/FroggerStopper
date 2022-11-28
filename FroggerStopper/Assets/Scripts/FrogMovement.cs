@@ -17,6 +17,7 @@ public class FrogMovement : MonoBehaviour
     private int FrogSpeed = 1;
 
 
+
     void Start()
     {
         
@@ -30,14 +31,14 @@ public class FrogMovement : MonoBehaviour
         if (moving == true)
         {   
             animator.SetBool("Jump", true);
-            Debug.Log("It's true");
+            // Debug.Log("It's true");
 
         }
 
         if (moving == false)
         {
             animator.SetBool("Jump", false);
-            Debug.Log("It's false");
+            // Debug.Log("It's false");
 
         }
 
@@ -53,7 +54,7 @@ public class FrogMovement : MonoBehaviour
         if (collision.gameObject.tag == "Car" && moving && collision.GetComponent<CarMovements>().getGo())
         {
             moving = false;
-            //GameController.GetComponent<MainGame>().RemoveFrog(frogger);
+            GameController.GetComponent<MainGame>().RemoveFrog(frogger);
             animator.SetBool("Jump", false);
             GetComponent<Renderer>().material.color = Color.red;
             Destroy(gameObject);
@@ -65,14 +66,13 @@ public class FrogMovement : MonoBehaviour
 
         while (moving)
         {
-            Debug.Log("On");
+            // Debug.Log("On");
 
             rb.velocity = new Vector2(0, FrogSpeed);
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(2.0f);
             rb.velocity = new Vector2(0, 0);
             yield return new WaitForSeconds(1);
-            Debug.Log("off");
-
+            // Debug.Log("off");
 
         }
         
@@ -92,7 +92,7 @@ public class FrogMovement : MonoBehaviour
             }
             else {
             
-                SceneManager.LoadScene("LostScene");// FIX AND REPLACE WITH RESTET UI
+                GameController.GetComponent<MainGame>().showLosePanel();
                 yield return null;
             }
         }

@@ -10,6 +10,7 @@ public class UserInput : MonoBehaviour
     public Sprite purpleCar;
     public Sprite dumpTruck;
     public Sprite redCar;
+    public GameObject controller;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class UserInput : MonoBehaviour
             {
                 CarMovements car = hit.collider.gameObject.GetComponent<CarMovements>();
                 Debug.Log("hit");
+
                 car.setMove(!car.getMove());
                 if (car.getSnap() && !car.getMove() && !car.getGo())
                 {

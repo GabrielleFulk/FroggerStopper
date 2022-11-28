@@ -12,10 +12,15 @@ public class CarMovements : MonoBehaviour
     public int points;
     public Sprite carImage;
 
+
+
+    public bool awake;
+    private SpriteRenderer sprite; 
     private bool snap; //whether or not a car is in a slot
     private Collider2D slot; // the slot the car snaps to
     private bool move; // whether or not the car is being moved by the mouse
     private bool go; // whether or not the car is moving down the road
+
 
     void Start()
     {
@@ -24,27 +29,46 @@ public class CarMovements : MonoBehaviour
         move = true;
         snap = false;
         go = false;
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+
+        if (awake){
+            sprite.color = new Color(1f, 1f, 1f, 1f);
+            sprite.transform.localScale = new Vector3(1.9f, 1.9f, 1.9f);
+        }
+        else
+        {
+            sprite.color = new Color(1f, 1f, 1f, .8f);
+            sprite.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+
+        }
+        
         if (move) 
         {
             if (slot != null) slot.GetComponent<SlotScript>().setTaken(false);
             transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z); 
         }
 
+
     }
 
     public void TriggerCarStart()
     {
+        awake= true;
         rb.velocity = new Vector2(-carSpeed, 0);
         go = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+
+        if (collider.gameObject.tag == "CarStopper")
+
         if (collider.gameObject.tag == "CarStopper" && go) 
+
         {
             Destroy(gameObject);
         }
@@ -64,7 +88,7 @@ public class CarMovements : MonoBehaviour
         {
             snap = true;
             slot = collision;
-            Debug.Log("ontrigger enter car");
+            // Debug.Log("ontrigger enter car");
             
         }
     }
@@ -75,7 +99,7 @@ public class CarMovements : MonoBehaviour
         {
             snap = false;
             slot = null;
-            Debug.Log("ontrigger Exit car");
+            // Debug.Log("ontrigger Exit car");
             //collision.GetComponent<SlotScript>().setTaken(false);
         }
     }
@@ -83,6 +107,8 @@ public class CarMovements : MonoBehaviour
     public void setMove(bool c) { move = c; }
 
     public bool getMove() { return move; }
+
+
     public bool getGo() { return go; }
     
     public bool getSnap() { return snap; }
@@ -94,3 +120,4 @@ public class CarMovements : MonoBehaviour
         Destroy(gameObject);
     }
 }
+

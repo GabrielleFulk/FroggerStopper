@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7712742886833685343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.43, y: 3.69, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frogger: {fileID: 0}
-  moving: 0
+  GameController: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!61 &-501689473167243882
 BoxCollider2D:
   m_ObjectHideFlags: 0
