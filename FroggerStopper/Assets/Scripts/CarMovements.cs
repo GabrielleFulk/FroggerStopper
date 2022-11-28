@@ -12,15 +12,14 @@ public class CarMovements : MonoBehaviour
     public int points;
     public Sprite carImage;
 
-    private bool snap;
-    private Collider2D slot;
-    private bool move;
-    private bool go;
+
 
     public bool awake;
     private SpriteRenderer sprite; 
-
-    private bool snapped;
+    private bool snap; //whether or not a car is in a slot
+    private Collider2D slot; // the slot the car snaps to
+    private bool move; // whether or not the car is being moved by the mouse
+    private bool go; // whether or not the car is moving down the road
 
 
     void Start()
@@ -30,11 +29,7 @@ public class CarMovements : MonoBehaviour
         move = true;
         snap = false;
         go = false;
-
         sprite = GetComponent<SpriteRenderer>();
-
-        snapped = false;
-
     }
 
     void Update()
