@@ -24,15 +24,16 @@ public class UserInput : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
             if (hit && hit.collider.CompareTag("Car"))
             {
+                CarMovements car = hit.collider.gameObject.GetComponent<CarMovements>();
                 Debug.Log("hit");
-                hit.collider.gameObject.GetComponent<CarMovements>().setMove(!hit.collider.gameObject.GetComponent<CarMovements>().getMove());
-                if (hit.collider.gameObject.GetComponent<CarMovements>().getSnap() && !hit.collider.gameObject.GetComponent<CarMovements>().getMove() && !hit.collider.gameObject.GetComponent<CarMovements>().getGo())
+                car.setMove(!car.getMove());
+                if (car.getSnap() && !car.getMove() && !car.getGo())
                 {
-                    hit.collider.gameObject.transform.position = hit.collider.gameObject.GetComponent<CarMovements>().getSlot().transform.position;
-                    hit.collider.gameObject.GetComponent<CarMovements>().getSlot().GetComponent<SlotScript>().setTaken(true);
+                    hit.collider.gameObject.transform.position = car.getSlot().transform.position;
+                    car.getSlot().GetComponent<SlotScript>().setTaken(true);
                     Debug.Log("test");
                 }
-                if (!hit.collider.gameObject.GetComponent<CarMovements>().getSnap() && !hit.collider.gameObject.GetComponent<CarMovements>().getMove() && !hit.collider.gameObject.GetComponent<CarMovements>().getGo()) 
+                if (!car.getSnap() && !car.getMove() && !car.getGo()) 
                 {
                     Debug.Log("Destroy");
                     Destroy(hit.collider.gameObject);
