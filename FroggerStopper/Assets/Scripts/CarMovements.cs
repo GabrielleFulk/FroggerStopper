@@ -51,6 +51,7 @@ public class CarMovements : MonoBehaviour
             if (slot != null) slot.GetComponent<SlotScript>().setTaken(false);
             transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, transform.position.z); 
         }
+       
 
 
     }
@@ -82,7 +83,7 @@ public class CarMovements : MonoBehaviour
         }*/
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    /*private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "slot" && !collision.GetComponent<SlotScript>().getTaken())
         {
@@ -91,9 +92,9 @@ public class CarMovements : MonoBehaviour
             // Debug.Log("ontrigger enter car");
             
         }
-    }
+    }*/
 
-    private void OnTriggerExit2D(Collider2D collision)
+    /*private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "slot")
         {
@@ -102,7 +103,7 @@ public class CarMovements : MonoBehaviour
             // Debug.Log("ontrigger Exit car");
             //collision.GetComponent<SlotScript>().setTaken(false);
         }
-    }
+    }*/
 
     public void setMove(bool c) { move = c; }
 
@@ -112,6 +113,8 @@ public class CarMovements : MonoBehaviour
     public bool getGo() { return go; }
     
     public bool getSnap() { return snap; }
+
+    public void setSnap(bool c) { snap = c; }
 
     public Collider2D getSlot() { return slot; }
     
