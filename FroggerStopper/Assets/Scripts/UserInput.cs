@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,19 +12,28 @@ public class UserInput : MonoBehaviour
     public Sprite dumpTruck;
     public Sprite redCar;
     public GameObject controller;
+    private bool busy; //mouse has a car
+    private GameObject currentCar;
 
     void Start()
     {
-
+        busy = false;
     }
 
     void Update()
     {
+        
+        /*if (hit && hit.collider.CompareTag("slot")) 
+        {
+            Debug.Log("drop");
+            car.GetComponent<CarMovements>().setSnap(true); 
+
+        }*/
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if (hit && hit.collider.CompareTag("Car"))
+            /*if (hit && hit.collider.CompareTag("Car"))
             {
                 CarMovements car = hit.collider.gameObject.GetComponent<CarMovements>();
                 Debug.Log("hit");
@@ -41,31 +51,72 @@ public class UserInput : MonoBehaviour
                     Destroy(hit.collider.gameObject);
                 }
                 
+            }*/
+            if (hit && hit.collider.CompareTag("slot") && currentCar != null && !hit.collider.GetComponent<SlotScript>().getTaken())
+            {
+                currentCar.transform.position = hit.collider.transform.position;
+                currentCar.GetComponent<CarMovements>().setMove(false);
+                hit.collider.GetComponent<SlotScript>().setCar(currentCar);
+                currentCar = null;
+                busy = false;
+                hit.collider.GetComponent<SlotScript>().setTaken(true);
+                
+
+            }
+            else if (hit && hit.collider.CompareTag("slot") && currentCar != null);
+            //Moving car from slot
+            else if (hit && hit.collider.CompareTag("slot") && currentCar == null && hit.collider.GetComponent<SlotScript>().getTaken())
+            {
+                UnityEngine.Debug.Log(hit.collider.GetComponent<SlotScript>().getCar());
+                currentCar = hit.collider.GetComponent<SlotScript>().getCar();
+                currentCar.GetComponent<CarMovements>().setMove(true);
+                hit.collider.GetComponent<SlotScript>().setCar(null);
+                hit.collider.GetComponent<SlotScript>().setTaken(false);
+                busy = true;
+            }
+            else if (busy && currentCar != null)
+            {
+                Destroy(currentCar);
+                currentCar = null;
+                busy = false;
+                //DestroyImmediate(car, true); 
             }
         }
     }
 
     public void SpawnRedCar()
     {        
-        car.GetComponent<SpriteRenderer>().sprite = redCar;
-        car.GetComponent<CarMovements>().points = 5;
-        car.GetComponent<CarMovements>().carSpeed = 2;
-        Instantiate(car, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f), Quaternion.identity);
+        if(!busy)
+        {
+            car.GetComponent<SpriteRenderer>().sprite = redCar;
+            car.GetComponent<CarMovements>().points = 3;
+            car.GetComponent<CarMovements>().carSpeed = 2;
+            currentCar = Instantiate(car, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f), Quaternion.identity);
+            busy = true;
+        }
     }
 
     public void SpawnPurpleCar()
     {
-        car.GetComponent<SpriteRenderer>().sprite = purpleCar;
-        car.GetComponent<CarMovements>().points = 4;
-        car.GetComponent<CarMovements>().carSpeed = 4;
-        Instantiate(car, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f), Quaternion.identity);
+        if (!busy)
+        {
+            car.GetComponent<SpriteRenderer>().sprite = purpleCar;
+            car.GetComponent<CarMovements>().points = 7;
+            car.GetComponent<CarMovements>().carSpeed = 4;
+            currentCar = Instantiate(car, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f), Quaternion.identity);
+            busy = true;
+        }
     }
 
     public void SpawnDumpTruck()
     {
-        car.GetComponent<SpriteRenderer>().sprite = dumpTruck;
-        car.GetComponent<CarMovements>().points = 6;
-        car.GetComponent<CarMovements>().carSpeed = 1;
-        Instantiate(car, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f), Quaternion.identity);
+        if (!busy)
+        {
+            car.GetComponent<SpriteRenderer>().sprite = dumpTruck;
+            car.GetComponent<CarMovements>().points = 5;
+            car.GetComponent<CarMovements>().carSpeed = 1;
+            currentCar = Instantiate(car, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f), Quaternion.identity);
+            busy = true;
+        }
     }
 }

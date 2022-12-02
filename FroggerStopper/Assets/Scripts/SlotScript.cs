@@ -6,6 +6,7 @@ public class SlotScript : MonoBehaviour
 {
     // Start is called before the first frame update
     bool taken;
+    GameObject car;
     void Start()
     {
         taken = false;
@@ -23,4 +24,8 @@ public class SlotScript : MonoBehaviour
     }
 
     public bool getTaken() { return taken; }
+
+    public void setCar(GameObject c) { car = c; }
+
+    public GameObject getCar() { return car; }  
 }
