@@ -12,6 +12,10 @@ public class ButtonController : MonoBehaviour
     public Button Car1Button;
     public Button Car2Button;
     public Button Car3Button;
+    public bool soundOn;
+    public Button soundButton;
+    public Sprite soundOnIcon;
+    public Sprite soundOffIcon;
 
     public GameObject controller;
 
@@ -21,6 +25,7 @@ public class ButtonController : MonoBehaviour
     void Start()
     {
         controller = GameObject.Find("GameController");
+        soundOn = true;
     }
 
     public void StartButtonClicked()
@@ -61,5 +66,20 @@ public class ButtonController : MonoBehaviour
     public void ShowLosePanel()
     {
         losePanel.SetActive(true);
+    }
+
+    public void ChangeSoundSetting()
+    {
+        if (soundOn)
+        {
+            AudioListener.pause = true; // will have to test this once we have sound
+            soundButton.GetComponent<Image>().sprite = soundOffIcon;
+        }
+        if (!soundOn)
+        {
+            AudioListener.pause = false;
+            soundButton.GetComponent<Image>().sprite = soundOnIcon;
+        }
+        soundOn = !soundOn;
     }
 }
