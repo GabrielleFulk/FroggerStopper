@@ -25,15 +25,16 @@ public class ButtonController : MonoBehaviour
     void Start()
     {
         controller = GameObject.Find("GameController");
+        Car1Button = GameObject.Find("Car1 Button").GetComponent<Button>();
         soundOn = true;
     }
 
     public void StartButtonClicked()
     {
         PlayButton.interactable = false;
-        // Car1Button.interactable = false;
-        // Car2Button.interactable = false;
-        // Car3Button.interactable = false;
+        Car1Button.interactable = false;
+        Car2Button.interactable = false;
+        Car3Button.interactable = false;
         controller.GetComponent<MainGame>().StartCars();
         allCarScripts = FindObjectsOfType<CarMovements>(); //Fixme and do a loop for every lane
         
