@@ -53,14 +53,24 @@ public class MainGame : MonoBehaviour
 
 
 
-    public GameObject Car1; // FIXME
-    public GameObject Car2;
-    public GameObject Car3;
+    public UnityEngine.UI.Button Car1Button;
+    public UnityEngine.UI.Button Car2Button;
+    public UnityEngine.UI.Button Car3Button;
 
-    public GameObject winPanel;
+    public int car1Points;
+    public int car2Points;
+    public int car3Points;
+
+    public GameObject oneStarWinPanel;
+    public GameObject twoStarWinPanel;
+    public GameObject threeStarWinPanel;
     public GameObject losePanel;
+    public TMP_Text panel1PointsText;
+    public TMP_Text panel2PointsText;
+    public TMP_Text panel3PointsText;
 
-  
+    public int totalPoints;
+    public TMP_Text pointsText;
 
 
 
@@ -69,6 +79,12 @@ public class MainGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        totalPoints = 15; //set starting points based on the level
+        pointsText.text = ("Points: " + totalPoints);
+        car1Points = 5;
+        car2Points = 4;
+        car3Points = 6;
+
         AliveFrogs = new List<GameObject>(); //FIXME
 
         foreach(GameObject alivefrog in GameObject.FindGameObjectsWithTag("Frog"))
@@ -123,9 +139,12 @@ public class MainGame : MonoBehaviour
         //Debug.Log((lanenum,subnum));
         Lanes[lanenum-1][subnum] = car;
         Debug.Log(Lanes[lanenum-1][subnum].name);
-       // Debug.Log(Lanes[lanenum]);
-        //Debug.Log(subnum); 
+
+        // Deduct available points based on which car is placed
+        totalPoints -= car.GetComponent<CarMovements>().points;
+        pointsText.text = ("Points: " + totalPoints);
     }
+
     public void RemoveCar(GameObject slot)
     {
         string[] helpers = (slot.name).Split("_");
@@ -133,22 +152,42 @@ public class MainGame : MonoBehaviour
         int lanenum = int.Parse(helpers[1]);
 
         int subnum = int.Parse(helpers[2]);
+
+        // Add back points when a car is taken out of the line up
+        totalPoints += Lanes[lanenum - 1][subnum].GetComponent<CarMovements>().points;
+        pointsText.text = ("Points: " + totalPoints);
+
         Lanes[lanenum - 1][subnum] = null;
     }
+
     public void RemoveFrog(GameObject theFrog){ //FIXME
         Debug.Log(theFrog.name);
         AliveFrogs.Remove(theFrog);
         Debug.Log(AliveFrogs.Count);
         if (AliveFrogs.Count == 0)
         {
-            winPanel.SetActive(true);
+            // not sure about the point limits I set here
+            if (totalPoints >= 5)
+            {
+                panel3PointsText.text = ("Points leftover: " + totalPoints);
+                threeStarWinPanel.SetActive(true);
+            } else if (totalPoints >= 3)
+            {
+                panel2PointsText.text = ("Points leftover: " + totalPoints);
+                twoStarWinPanel.SetActive(true);
+            } else
+            {
+                panel1PointsText.text = ("Points leftover: " + totalPoints);
+                oneStarWinPanel.SetActive(true);
+            }
         }
     }
 
-    public void RunGame() //Willl call all the necisarry functions to run the game
+    public void RunGame() //Will call all the necisarry functions to run the game
     { 
 
     }
+
     public void StartCars()
     {
         
@@ -160,7 +199,8 @@ public class MainGame : MonoBehaviour
 
 
     }
-    public IEnumerator Runcars(List<GameObject> Lane,int i) //Willl call all the necisarry functions to run the game
+
+    public IEnumerator Runcars(List<GameObject> Lane,int i) //Will call all the necisarry functions to run the game
     {
         while (Lane.Count() != 0)
         {
@@ -189,33 +229,19 @@ public class MainGame : MonoBehaviour
         }
         yield return null;
 
-                             //FIXME replace with all lanes not just lane 1
+        //FIXME replace with all lanes not just lane 1
         //myObject.GetComponent<MyScript>().MyFunction(); FIXME
     }
-    
-    IEnumerator ReleaseFromArray(List<GameObject> arr)
-    {
-        Debug.Log("Go");
-        if (arr.Count > 0)
-        {
-            Debug.Log(arr.Count);
-            GameObject apple = arr[0];
-            arr.RemoveAt(0);
-            Destroy(apple);
-            Debug.Log(arr.Count);
-            yield return new WaitForSeconds(10f);
-        }
-        else
-        {
-            yield return null;
-        }
-    }
-
-    // Update is called once per frame
 
     void Update()
     {
-      
+        // Check if each car can be purchased
+        if (totalPoints < car1Points) Car1Button.interactable = false;
+        if (totalPoints >= car1Points) Car1Button.interactable = true;
+        if (totalPoints < car2Points) Car2Button.interactable = false;
+        if (totalPoints >= car2Points) Car2Button.interactable = true;
+        if (totalPoints < car3Points) Car3Button.interactable = false;
+        if (totalPoints >= car3Points) Car3Button.interactable = true;        
     }
 
     public void showLosePanel()
