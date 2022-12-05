@@ -14,9 +14,12 @@ public class UserInput : MonoBehaviour
     public GameObject controller;
     private bool busy; //mouse has a car
     private GameObject currentCar;
+    private LayerMask layermask;
 
     void Start()
     {
+        
+        layermask = ~(LayerMask.GetMask("CarsLayer"));
         busy = false;
     }
 
@@ -31,8 +34,8 @@ public class UserInput : MonoBehaviour
         }*/
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x,Input.mousePosition.y,10));
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction,100f,layermask);
             /*if (hit && hit.collider.CompareTag("Car"))
             {
                 CarMovements car = hit.collider.gameObject.GetComponent<CarMovements>();
@@ -57,9 +60,11 @@ public class UserInput : MonoBehaviour
                 currentCar.transform.position = hit.collider.transform.position;
                 currentCar.GetComponent<CarMovements>().setMove(false);
                 hit.collider.GetComponent<SlotScript>().setCar(currentCar);
+                controller.GetComponent<MainGame>().AddCar(hit.collider.gameObject,currentCar);
                 currentCar = null;
                 busy = false;
                 hit.collider.GetComponent<SlotScript>().setTaken(true);
+                
                 
 
             }
@@ -73,6 +78,7 @@ public class UserInput : MonoBehaviour
                 hit.collider.GetComponent<SlotScript>().setCar(null);
                 hit.collider.GetComponent<SlotScript>().setTaken(false);
                 busy = true;
+                controller.GetComponent<MainGame>().RemoveCar(hit.collider.gameObject);
             }
             else if (busy && currentCar != null)
             {
@@ -101,7 +107,7 @@ public class UserInput : MonoBehaviour
         if (!busy)
         {
             car.GetComponent<SpriteRenderer>().sprite = purpleCar;
-            car.GetComponent<CarMovements>().points = 7;
+            car.GetComponent<CarMovements>().points = 4;
             car.GetComponent<CarMovements>().carSpeed = 4;
             currentCar = Instantiate(car, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f), Quaternion.identity);
             busy = true;
