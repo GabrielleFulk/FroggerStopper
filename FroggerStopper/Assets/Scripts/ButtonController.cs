@@ -9,12 +9,12 @@ public class ButtonController : MonoBehaviour
     private CarMovements[] allCarScripts;
     private FrogMovement[] allFrogScripts;
     public Button PlayButton;
-    public Button CarButton;
-
+    public Button Car1Button;
+    public Button Car2Button;
+    public Button Car3Button;
 
     public GameObject controller;
 
-    public GameObject winPanel;
     public GameObject losePanel;
 
 
@@ -26,7 +26,9 @@ public class ButtonController : MonoBehaviour
     public void StartButtonClicked()
     {
         PlayButton.interactable = false;
-        CarButton.interactable = false;
+        // Car1Button.interactable = false;
+        // Car2Button.interactable = false;
+        // Car3Button.interactable = false;
         controller.GetComponent<MainGame>().StartCars();
         allCarScripts = FindObjectsOfType<CarMovements>(); //Fixme and do a loop for every lane
         
@@ -54,11 +56,6 @@ public class ButtonController : MonoBehaviour
     public void BackButtonClicked()
     {
         SceneManager.LoadScene(0); // load title scene
-    }
-
-    public void ShowWinPanel()
-    {
-        winPanel.SetActive(true);
     }
 
     public void ShowLosePanel()
