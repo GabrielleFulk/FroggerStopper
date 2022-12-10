@@ -20,6 +20,8 @@ public class ButtonController : MonoBehaviour
 
     void Start()
     {
+       
+        Debug.Log("hit");
         controller = GameObject.Find("GameController");
     }
 
@@ -45,7 +47,12 @@ public class ButtonController : MonoBehaviour
 
     public void PlayButtonClicked()
     {
-        SceneManager.LoadScene(2); // load main UIScene
+        SceneManager.LoadScene("LevelsScene"); // load LevelsScen
+    }
+
+    public void LevelOneButtonClicked() // load main UIScene
+    {
+        SceneManager.LoadScene(2);
     }
 
     public void HowButtonClicked()
@@ -61,5 +68,10 @@ public class ButtonController : MonoBehaviour
     public void ShowLosePanel()
     {
         losePanel.SetActive(true);
+    }
+
+    public void resetStars()
+    {
+        PlayerPrefs.SetInt("levelOneStars", 0);
     }
 }
