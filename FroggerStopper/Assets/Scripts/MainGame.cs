@@ -65,6 +65,8 @@ public class MainGame : MonoBehaviour
     public GameObject twoStarWinPanel;
     public GameObject threeStarWinPanel;
     public GameObject losePanel;
+    
+
     public TMP_Text panel1PointsText;
     public TMP_Text panel2PointsText;
     public TMP_Text panel3PointsText;
@@ -72,7 +74,7 @@ public class MainGame : MonoBehaviour
     public int totalPoints;
     public TMP_Text pointsText;
 
-
+    bool gameStarted;
 
 
 
@@ -85,6 +87,8 @@ public class MainGame : MonoBehaviour
         car2Points = 4;
         car3Points = 6;
         
+
+        gameStarted = false;
 
         AliveFrogs = new List<GameObject>(); //FIXME
 
@@ -194,7 +198,7 @@ public class MainGame : MonoBehaviour
 
     public void StartCars()
     {
-        
+        gameStarted = true;
         StartCoroutine(Runcars(Lane1,1));
         StartCoroutine(Runcars(Lane2, 2));
         StartCoroutine(Runcars(Lane3, 3));
@@ -226,7 +230,7 @@ public class MainGame : MonoBehaviour
                         Lane[b].GetComponent<CarMovements>().awake = true;
                     }
                     Lane[b].transform.position = LanePos[i-1][b];   // FIXME RIGHT NOW THERE IS AN ISSUE WITH THIS
-                    yield return new WaitForSeconds(.5f);
+                    yield return new WaitForSeconds(2f);
                 }
             }
             yield return new WaitForSeconds(.5f);
@@ -240,12 +244,15 @@ public class MainGame : MonoBehaviour
     void Update()
     {
         // Check if each car can be purchased
-        if (totalPoints < car1Points) Car1Button.interactable = false;
-        if (totalPoints >= car1Points) Car1Button.interactable = true;
-        if (totalPoints < car2Points) Car2Button.interactable = false;
-        if (totalPoints >= car2Points) Car2Button.interactable = true;
-        if (totalPoints < car3Points) Car3Button.interactable = false;
-        if (totalPoints >= car3Points) Car3Button.interactable = true;        
+        if (!gameStarted)
+        {
+            if (totalPoints < car1Points) Car1Button.interactable = false;
+            if (totalPoints >= car1Points) Car1Button.interactable = true;
+            if (totalPoints < car2Points) Car2Button.interactable = false;
+            if (totalPoints >= car2Points) Car2Button.interactable = true;
+            if (totalPoints < car3Points) Car3Button.interactable = false;
+            if (totalPoints >= car3Points) Car3Button.interactable = true;
+        }        
     }
 
     public void showLosePanel()

@@ -68,7 +68,6 @@ public class UserInput : MonoBehaviour
                 
 
             }
-            else if (hit && hit.collider.CompareTag("slot") && currentCar != null);
             //Moving car from slot
             else if (hit && hit.collider.CompareTag("slot") && currentCar == null && hit.collider.GetComponent<SlotScript>().getTaken())
             {
