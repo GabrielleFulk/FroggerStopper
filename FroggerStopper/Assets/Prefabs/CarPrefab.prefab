@@ -147,6 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carSpeed: 4
-  points: 7
+  points: 4
   carImage: {fileID: 0}
   awake: 0
