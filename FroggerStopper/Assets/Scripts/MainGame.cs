@@ -226,7 +226,7 @@ public class MainGame : MonoBehaviour
                         Lane[b].GetComponent<CarMovements>().awake = true;
                     }
                     Lane[b].transform.position = LanePos[i-1][b];   // FIXME RIGHT NOW THERE IS AN ISSUE WITH THIS
-                    yield return new WaitForSeconds(.5f);
+                    yield return new WaitForSeconds(2f);
                 }
             }
             yield return new WaitForSeconds(.5f);
