@@ -26,6 +26,8 @@ public class ButtonController : MonoBehaviour
 
     void Start()
     {
+       
+        Debug.Log("hit");
         controller = GameObject.Find("GameController");
         Camera = GameObject.Find("Main Camera");
         soundOn = true;
@@ -80,7 +82,12 @@ public class ButtonController : MonoBehaviour
 
     public void PlayButtonClicked()
     {
-        SceneManager.LoadScene(2); // load main UIScene
+        SceneManager.LoadScene("LevelsScene"); // load LevelsScen
+    }
+
+    public void LevelOneButtonClicked() // load main UIScene
+    {
+        SceneManager.LoadScene(2);
     }
 
     public void HowButtonClicked()
@@ -97,6 +104,7 @@ public class ButtonController : MonoBehaviour
     {
         losePanel.SetActive(true);
     }
+
 
     public void ChangeSoundSetting()
     {

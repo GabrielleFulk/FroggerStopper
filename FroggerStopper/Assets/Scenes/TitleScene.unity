@@ -220,6 +220,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a29299d19bf03042b25e6a82191b8fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayButton: {fileID: 0}
+  Car1Button: {fileID: 0}
+  Car2Button: {fileID: 0}
+  Car3Button: {fileID: 0}
+  controller: {fileID: 0}
+  losePanel: {fileID: 0}
 --- !u!1 &720644257
 GameObject:
   m_ObjectHideFlags: 0

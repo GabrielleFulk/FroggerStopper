@@ -7410,7 +7410,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 304086179}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: PlayButtonClicked
+        m_MethodName: LevelOneButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11942,7 +11942,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 304086179}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: PlayButtonClicked
+        m_MethodName: LevelOneButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16521,7 +16521,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 304086179}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: PlayButtonClicked
+        m_MethodName: LevelOneButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18584,7 +18584,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 304086179}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
-        m_MethodName: PlayButtonClicked
+        m_MethodName: LevelOneButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

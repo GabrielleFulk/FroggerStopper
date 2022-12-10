@@ -86,6 +86,7 @@ public class MainGame : MonoBehaviour
         car1Points = 5;
         car2Points = 4;
         car3Points = 6;
+        
 
         gameStarted = false;
 
@@ -174,15 +175,18 @@ public class MainGame : MonoBehaviour
             if (totalPoints >= 5)
             {
                 panel3PointsText.text = ("Points leftover: " + totalPoints);
+                PlayerPrefs.SetInt("levelOneStars", 3);
                 threeStarWinPanel.SetActive(true);
             } else if (totalPoints >= 3)
             {
                 panel2PointsText.text = ("Points leftover: " + totalPoints);
                 twoStarWinPanel.SetActive(true);
+                if (PlayerPrefs.GetInt("levelOneStars")<2) PlayerPrefs.SetInt("levelOneStars", 2);
             } else
             {
                 panel1PointsText.text = ("Points leftover: " + totalPoints);
                 oneStarWinPanel.SetActive(true);
+                if (PlayerPrefs.GetInt("levelOneStars") < 1) PlayerPrefs.SetInt("levelOneStars", 1);
             }
         }
     }
