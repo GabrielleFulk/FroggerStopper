@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5982104693555659256
 SpriteRenderer:
@@ -123,6 +123,7 @@ MonoBehaviour:
   frogger: {fileID: 5982104693555659258}
   GameController: {fileID: 0}
   animator: {fileID: 5982104693555659257}
+  losePanel: {fileID: 0}
 --- !u!61 &5982104693555659261
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -11,22 +11,29 @@ public class ButtonController : MonoBehaviour
     public Button PlayButton;
     public Button CarButton;
 
+
+    public GameObject controller;
+
     public GameObject winPanel;
     public GameObject losePanel;
 
+
     void Start()
     {
+        controller = GameObject.Find("GameController");
     }
 
     public void StartButtonClicked()
     {
         PlayButton.interactable = false;
         CarButton.interactable = false;
-        allCarScripts = FindObjectsOfType<CarMovements>();
+        controller.GetComponent<MainGame>().StartCars();
+        allCarScripts = FindObjectsOfType<CarMovements>(); //Fixme and do a loop for every lane
+        
         allFrogScripts = FindObjectsOfType<FrogMovement>();
         foreach (CarMovements car in allCarScripts)
         {
-            car.TriggerCarStart();
+            //car.TriggerCarStart();
         }
         foreach(FrogMovement frog in allFrogScripts)
         {

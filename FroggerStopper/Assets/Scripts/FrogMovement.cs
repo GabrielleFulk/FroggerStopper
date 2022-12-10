@@ -12,9 +12,19 @@ public class FrogMovement : MonoBehaviour
     // Start is called before the first frame update
     public Animator animator;
     
-    private bool moving;
-    //private float FrogSpeed = 0.005f;
-    private int FrogSpeed = 1;
+    public bool moving;
+    public int FrogSpeed = 1;
+
+    // Pos and Pos2 are vector positions for the manholes. 
+    // For example, the enemyprefab will be transported to this coordinate.  
+    private Vector3 pos;
+    private Vector3 pos2;
+
+    // This holds an array of rigidbodies in the list with the same script as this one. 
+    public Rigidbody2D[] enemyPrefabs;
+
+     private int count;
+
 
 
     void Start()
@@ -31,15 +41,11 @@ public class FrogMovement : MonoBehaviour
         if (moving == true)
         {   
             animator.SetBool("Jump", true);
-            Debug.Log("It's true");
-
         }
 
         if (moving == false)
         {
             animator.SetBool("Jump", false);
-            Debug.Log("It's false");
-
         }
 
     }
@@ -52,12 +58,11 @@ public class FrogMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Car" && moving)
+        if (collision.gameObject.tag == "Car" && moving && collision.GetComponent<CarMovements>().getGo())
         {
             moving = false;
-            //GameController.GetComponent<MainGame>().RemoveFrog(frogger);
+            GameController.GetComponent<MainGame>().RemoveFrog(frogger);
             animator.SetBool("Jump", false);
-            GetComponent<Renderer>().material.color = Color.red;
             Destroy(gameObject);
         }
     }
@@ -67,22 +72,16 @@ public class FrogMovement : MonoBehaviour
 
         while (moving)
         {
-            Debug.Log("On");
-
             rb.velocity = new Vector2(0, FrogSpeed);
-            yield return new WaitForSeconds(1.3f);
+            yield return new WaitForSeconds(2.0f);
             rb.velocity = new Vector2(0, 0);
             yield return new WaitForSeconds(1);
-            Debug.Log("off");
-
-
         }
-        
-        
+
             yield return null;
-        
 
     }
+
     private IEnumerator Lost()
     {
         
@@ -94,7 +93,7 @@ public class FrogMovement : MonoBehaviour
             }
             else {
             
-                SceneManager.LoadScene("LostScene");// FIX AND REPLACE WITH RESTET UI
+                GameController.GetComponent<MainGame>().showLosePanel();
                 yield return null;
             }
         }
