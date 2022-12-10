@@ -72,7 +72,7 @@ public class MainGame : MonoBehaviour
     public int totalPoints;
     public TMP_Text pointsText;
 
-
+    bool gameStarted;
 
 
 
@@ -84,6 +84,8 @@ public class MainGame : MonoBehaviour
         car1Points = 5;
         car2Points = 4;
         car3Points = 6;
+
+        gameStarted = false;
 
         AliveFrogs = new List<GameObject>(); //FIXME
 
@@ -190,7 +192,7 @@ public class MainGame : MonoBehaviour
 
     public void StartCars()
     {
-        
+        gameStarted = true;
         StartCoroutine(Runcars(Lane1,1));
         StartCoroutine(Runcars(Lane2, 2));
         StartCoroutine(Runcars(Lane3, 3));
@@ -236,12 +238,15 @@ public class MainGame : MonoBehaviour
     void Update()
     {
         // Check if each car can be purchased
-        if (totalPoints < car1Points) Car1Button.interactable = false;
-        if (totalPoints >= car1Points) Car1Button.interactable = true;
-        if (totalPoints < car2Points) Car2Button.interactable = false;
-        if (totalPoints >= car2Points) Car2Button.interactable = true;
-        if (totalPoints < car3Points) Car3Button.interactable = false;
-        if (totalPoints >= car3Points) Car3Button.interactable = true;        
+        if (!gameStarted)
+        {
+            if (totalPoints < car1Points) Car1Button.interactable = false;
+            if (totalPoints >= car1Points) Car1Button.interactable = true;
+            if (totalPoints < car2Points) Car2Button.interactable = false;
+            if (totalPoints >= car2Points) Car2Button.interactable = true;
+            if (totalPoints < car3Points) Car3Button.interactable = false;
+            if (totalPoints >= car3Points) Car3Button.interactable = true;
+        }        
     }
 
     public void showLosePanel()

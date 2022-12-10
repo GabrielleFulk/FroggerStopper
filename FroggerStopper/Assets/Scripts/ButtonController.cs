@@ -12,6 +12,10 @@ public class ButtonController : MonoBehaviour
     public Button Car1Button;
     public Button Car2Button;
     public Button Car3Button;
+    public bool soundOn;
+    public Button soundButton;
+    public Sprite soundOnIcon;
+    public Sprite soundOffIcon;
 
     public GameObject controller;
 
@@ -21,22 +25,17 @@ public class ButtonController : MonoBehaviour
     void Start()
     {
         controller = GameObject.Find("GameController");
+        soundOn = true;
     }
 
     public void StartButtonClicked()
     {
         PlayButton.interactable = false;
-        // Car1Button.interactable = false;
-        // Car2Button.interactable = false;
-        // Car3Button.interactable = false;
-        controller.GetComponent<MainGame>().StartCars();
-        allCarScripts = FindObjectsOfType<CarMovements>(); //Fixme and do a loop for every lane
-        
+        Car1Button.interactable = false;
+        Car2Button.interactable = false;
+        Car3Button.interactable = false;
+        controller.GetComponent<MainGame>().StartCars();        
         allFrogScripts = FindObjectsOfType<FrogMovement>();
-        foreach (CarMovements car in allCarScripts)
-        {
-            //car.TriggerCarStart();
-        }
         foreach(FrogMovement frog in allFrogScripts)
         {
             frog.TriggerFrogStart();
@@ -61,5 +60,20 @@ public class ButtonController : MonoBehaviour
     public void ShowLosePanel()
     {
         losePanel.SetActive(true);
+    }
+
+    public void ChangeSoundSetting()
+    {
+        if (soundOn)
+        {
+            AudioListener.pause = true; // will have to test this once we have sound
+            soundButton.GetComponent<Image>().sprite = soundOffIcon;
+        }
+        if (!soundOn)
+        {
+            AudioListener.pause = false;
+            soundButton.GetComponent<Image>().sprite = soundOnIcon;
+        }
+        soundOn = !soundOn;
     }
 }
