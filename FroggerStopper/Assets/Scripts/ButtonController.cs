@@ -12,6 +12,8 @@ public class ButtonController : MonoBehaviour
     public Button Car1Button;
     public Button Car2Button;
     public Button Car3Button;
+    public Button showFrogButton;
+    public GameObject Camera;
     public bool soundOn;
     public Button soundButton;
     public Sprite soundOnIcon;
@@ -24,13 +26,18 @@ public class ButtonController : MonoBehaviour
 
     void Start()
     {
+       
+        Debug.Log("hit");
         controller = GameObject.Find("GameController");
+        Camera = GameObject.Find("Main Camera");
         soundOn = true;
+
     }
 
     public void StartButtonClicked()
     {
-        PlayButton.interactable = false;
+        PlayButton.interactable = false;       
+        showFrogButton.interactable = false;
         Car1Button.interactable = false;
         Car2Button.interactable = false;
         Car3Button.interactable = false;
@@ -41,10 +48,46 @@ public class ButtonController : MonoBehaviour
             frog.TriggerFrogStart();
         }
     }
+    public void ShowFrogs()
+    {
+        StartCoroutine(lerp());   
+    }
+    IEnumerator lerp()
+    {
+        float endValue = -6;
+        float startValue = 0;
+        if (Camera.transform.position.y < -0.5)
+        {
+            endValue = 0;
+            startValue = -6;
+        }
+        float lerpDuration = 1.5f;
+        float timeElapsed = 0;
+
+        float valueToLerp;
+        while (timeElapsed < lerpDuration)
+        {
+            valueToLerp = Mathf.Lerp(startValue, endValue, timeElapsed / lerpDuration);
+            timeElapsed += Time.deltaTime;
+            Camera.transform.position = new Vector3(0, valueToLerp, -10);
+            showFrogButton.interactable = false;
+
+            yield return null;
+        }
+        showFrogButton.interactable = true;
+
+        valueToLerp = endValue;
+    }
+  
 
     public void PlayButtonClicked()
     {
-        SceneManager.LoadScene(2); // load main UIScene
+        SceneManager.LoadScene("LevelsScene"); // load LevelsScen
+    }
+
+    public void LevelOneButtonClicked() // load main UIScene
+    {
+        SceneManager.LoadScene(2);
     }
 
     public void HowButtonClicked()
@@ -61,6 +104,7 @@ public class ButtonController : MonoBehaviour
     {
         losePanel.SetActive(true);
     }
+
 
     public void ChangeSoundSetting()
     {

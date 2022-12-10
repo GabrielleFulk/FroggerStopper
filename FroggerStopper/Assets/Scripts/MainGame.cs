@@ -65,6 +65,8 @@ public class MainGame : MonoBehaviour
     public GameObject twoStarWinPanel;
     public GameObject threeStarWinPanel;
     public GameObject losePanel;
+    
+
     public TMP_Text panel1PointsText;
     public TMP_Text panel2PointsText;
     public TMP_Text panel3PointsText;
@@ -84,6 +86,7 @@ public class MainGame : MonoBehaviour
         car1Points = 5;
         car2Points = 4;
         car3Points = 6;
+        
 
         gameStarted = false;
 
@@ -172,15 +175,18 @@ public class MainGame : MonoBehaviour
             if (totalPoints >= 5)
             {
                 panel3PointsText.text = ("Points leftover: " + totalPoints);
+                PlayerPrefs.SetInt("levelOneStars", 3);
                 threeStarWinPanel.SetActive(true);
             } else if (totalPoints >= 3)
             {
                 panel2PointsText.text = ("Points leftover: " + totalPoints);
                 twoStarWinPanel.SetActive(true);
+                if (PlayerPrefs.GetInt("levelOneStars")<2) PlayerPrefs.SetInt("levelOneStars", 2);
             } else
             {
                 panel1PointsText.text = ("Points leftover: " + totalPoints);
                 oneStarWinPanel.SetActive(true);
+                if (PlayerPrefs.GetInt("levelOneStars") < 1) PlayerPrefs.SetInt("levelOneStars", 1);
             }
         }
     }
@@ -224,7 +230,7 @@ public class MainGame : MonoBehaviour
                         Lane[b].GetComponent<CarMovements>().awake = true;
                     }
                     Lane[b].transform.position = LanePos[i-1][b];   // FIXME RIGHT NOW THERE IS AN ISSUE WITH THIS
-                    yield return new WaitForSeconds(.5f);
+                    yield return new WaitForSeconds(2f);
                 }
             }
             yield return new WaitForSeconds(.5f);

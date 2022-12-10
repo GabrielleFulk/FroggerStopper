@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/UIScene.unity
     guid: 66b5977ff5dd69e40ac3687fc53781b3
   - enabled: 1
+    path: Assets/Scenes/LevelsScene.unity
+    guid: df8bbddc476dec5478fcd0e77d131bf8
+  - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: e9855531018801a4182078e57ca22c9f
   - enabled: 1
