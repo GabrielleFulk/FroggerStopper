@@ -65,6 +65,8 @@ public class MainGame : MonoBehaviour
     public GameObject twoStarWinPanel;
     public GameObject threeStarWinPanel;
     public GameObject losePanel;
+    
+
     public TMP_Text panel1PointsText;
     public TMP_Text panel2PointsText;
     public TMP_Text panel3PointsText;
