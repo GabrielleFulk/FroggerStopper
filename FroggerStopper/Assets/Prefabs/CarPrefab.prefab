@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5a1d4391b33c94d8a09d654144c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carSpeed: 4
-  points: 4
+  carSpeed: 2
+  points: 3
   carImage: {fileID: 0}
   awake: 0
