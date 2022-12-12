@@ -128,7 +128,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5982104693555659258, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
@@ -188,7 +187,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
 --- !u!95 &28974082 stripped
 Animator:
@@ -261,11 +259,21 @@ MonoBehaviour:
   Frog4: {fileID: 5982104693555659258, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
   Frog5: {fileID: 5982104693555659258, guid: d16cb69199be22a4eb92ad25e222b749, type: 3}
   AliveFrogs: []
-  Car1: {fileID: 0}
-  Car2: {fileID: 0}
-  Car3: {fileID: 0}
-  winPanel: {fileID: 0}
+  Car1Button: {fileID: 0}
+  Car2Button: {fileID: 0}
+  Car3Button: {fileID: 0}
+  car1Points: 0
+  car2Points: 0
+  car3Points: 0
+  oneStarWinPanel: {fileID: 0}
+  twoStarWinPanel: {fileID: 0}
+  threeStarWinPanel: {fileID: 0}
   losePanel: {fileID: 0}
+  panel1PointsText: {fileID: 0}
+  panel2PointsText: {fileID: 0}
+  panel3PointsText: {fileID: 0}
+  totalPoints: 0
+  pointsText: {fileID: 0}
 --- !u!4 &123684619
 Transform:
   m_ObjectHideFlags: 0
@@ -301,7 +309,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7472173041652095230, guid: 3f644527d6043d94da24b6f33d08555a, type: 3}
@@ -353,8 +360,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f644527d6043d94da24b6f33d08555a, type: 3}
+--- !u!1 &970744792 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5492688029811431395, guid: 67bb229a4edd9284aa61860a18ef6755, type: 3}
+  m_PrefabInstance: {fileID: 192622825685694568}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &1080801173 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4074006895914745286, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
@@ -370,7 +381,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
@@ -379,11 +389,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.37
+      value: -1.83
       objectReference: {fileID: 0}
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.01
+      value: -5.28
       objectReference: {fileID: 0}
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -426,6 +436,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 28974082}
     - target: {fileID: 5872166748573665673, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
+      propertyPath: spawnOne
+      value: 
+      objectReference: {fileID: 970744792}
+    - target: {fileID: 5872166748573665673, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
+      propertyPath: spawnTwo
+      value: 
+      objectReference: {fileID: 970744792}
+    - target: {fileID: 5872166748573665673, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: enemyPrefabs.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -442,7 +460,6 @@ PrefabInstance:
       value: Frog
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
 --- !u!1 &1132373279
 GameObject:
@@ -533,7 +550,6 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7472173041652095230, guid: 3f644527d6043d94da24b6f33d08555a, type: 3}
@@ -585,14 +601,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f644527d6043d94da24b6f33d08555a, type: 3}
 --- !u!1001 &1408589926
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
@@ -601,11 +615,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.81
+      value: 2.92
       objectReference: {fileID: 0}
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.23
+      value: -5.25
       objectReference: {fileID: 0}
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -648,6 +662,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1080801175}
     - target: {fileID: 5872166748573665673, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
+      propertyPath: spawnOne
+      value: 
+      objectReference: {fileID: 970744792}
+    - target: {fileID: 5872166748573665673, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
+      propertyPath: spawnTwo
+      value: 
+      objectReference: {fileID: 970744792}
+    - target: {fileID: 5872166748573665673, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: enemyPrefabs.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -660,14 +682,12 @@ PrefabInstance:
       value: FrogVariety_94 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
 --- !u!1001 &1579114832
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7472173041652095230, guid: 3f644527d6043d94da24b6f33d08555a, type: 3}
@@ -719,7 +739,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f644527d6043d94da24b6f33d08555a, type: 3}
 --- !u!1 &1633455319
 GameObject:
@@ -799,14 +818,13 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1633455321}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1917604407
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
@@ -815,11 +833,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.85
+      value: 6.67
       objectReference: {fileID: 0}
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.06
+      value: -7.04
       objectReference: {fileID: 0}
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -862,6 +880,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 63575911}
     - target: {fileID: 5872166748573665673, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
+      propertyPath: spawnOne
+      value: 
+      objectReference: {fileID: 970744792}
+    - target: {fileID: 5872166748573665673, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
+      propertyPath: spawnTwo
+      value: 
+      objectReference: {fileID: 970744792}
+    - target: {fileID: 5872166748573665673, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: enemyPrefabs.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -873,15 +899,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrogVariety_94 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8515810687499714365, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
+      propertyPath: m_TagString
+      value: Frog
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
 --- !u!1001 &1968556946
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
@@ -890,11 +918,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.31
+      value: -6.02
       objectReference: {fileID: 0}
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.21
+      value: -7.58
       objectReference: {fileID: 0}
     - target: {fileID: 375136693838344524, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -937,6 +965,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 277178562}
     - target: {fileID: 5872166748573665673, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
+      propertyPath: spawnOne
+      value: 
+      objectReference: {fileID: 970744792}
+    - target: {fileID: 5872166748573665673, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
+      propertyPath: spawnTwo
+      value: 
+      objectReference: {fileID: 970744792}
+    - target: {fileID: 5872166748573665673, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
       propertyPath: enemyPrefabs.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -949,14 +985,12 @@ PrefabInstance:
       value: FrogVariety_94 (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe5dc3a1048fbd43a7c379f5fa4f37b, type: 3}
 --- !u!1001 &192622825685694568
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2334300287227696716, guid: 67bb229a4edd9284aa61860a18ef6755, type: 3}
@@ -1008,5 +1042,4 @@ PrefabInstance:
       value: '!$RTPSewer+entrance2left_10'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 67bb229a4edd9284aa61860a18ef6755, type: 3}
