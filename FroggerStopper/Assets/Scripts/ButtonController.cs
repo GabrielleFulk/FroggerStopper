@@ -8,6 +8,7 @@ public class ButtonController : MonoBehaviour
 {
     private CarMovements[] allCarScripts;
     private FrogMovement[] allFrogScripts;
+    private FastFrogMovement[] allFastFrogScripts;
     public Button PlayButton;
     public Button Car1Button;
     public Button Car2Button;
@@ -43,7 +44,12 @@ public class ButtonController : MonoBehaviour
         Car3Button.interactable = false;
         controller.GetComponent<MainGame>().StartCars();        
         allFrogScripts = FindObjectsOfType<FrogMovement>();
+        allFastFrogScripts = FindObjectsOfType<FastFrogMovement>();
         foreach(FrogMovement frog in allFrogScripts)
+        {
+            frog.TriggerFrogStart();
+        }
+        foreach(FastFrogMovement frog in allFastFrogScripts)
         {
             frog.TriggerFrogStart();
         }

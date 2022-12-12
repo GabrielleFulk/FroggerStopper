@@ -61,7 +61,7 @@ public class FrogMovement : MonoBehaviour
         if (collision.gameObject.tag == "Car" && moving && collision.GetComponent<CarMovements>().getGo())
         {
             moving = false;
-            GameController.GetComponent<MainGame>().RemoveFrog(frogger);
+            GameController.GetComponent<MainGame>().RemoveFrog(gameObject);
             animator.SetBool("Jump", false);
             Destroy(gameObject);
         }

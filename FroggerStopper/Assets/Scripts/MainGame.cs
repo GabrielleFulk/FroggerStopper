@@ -81,7 +81,7 @@ public class MainGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        totalPoints = 15; //set starting points based on the level
+        totalPoints = 100; //set starting points based on the level
         pointsText.text = ("Points: " + totalPoints);
         car1Points = 5;
         car2Points = 4;
