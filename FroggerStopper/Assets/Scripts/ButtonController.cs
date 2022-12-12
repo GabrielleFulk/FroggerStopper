@@ -91,9 +91,19 @@ public class ButtonController : MonoBehaviour
         SceneManager.LoadScene("LevelsScene"); // load LevelsScen
     }
 
-    public void LevelOneButtonClicked() // load main UIScene
+    public void LevelOneButtonClicked() 
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void LevelTwoButtonClicked()
+    {
+        SceneManager.LoadScene("Level2");
+    }
+
+    public void RestartButtonClicked()
+    {
+        SceneManager.LoadScene(controller.GetComponent<MainGame>().currentLevel);
     }
 
     public void HowButtonClicked()
