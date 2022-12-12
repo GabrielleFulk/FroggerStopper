@@ -74,10 +74,15 @@ public class MainGame : MonoBehaviour
     public int totalPoints;
     public TMP_Text pointsText;
 
-    bool gameStarted;
+    int threeStarWin;
+    int twoStarWin;
 
-    public int twoStarPoints;
-    public int threeStarPoints;
+    public AudioSource backgroundMusic;
+    public GameObject winSound;
+    public GameObject loseSound;
+
+    public string currentLevel;
+    bool gameStarted;
 
     public string level;
 
@@ -85,7 +90,39 @@ public class MainGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //totalPoints = 15; //set starting points based on the level
+        currentLevel = SceneManager.GetActiveScene().name;
+         //set starting points based on the level
+        if (currentLevel == "Level1")
+        {
+            totalPoints = 15;
+            threeStarWin = 5;
+            twoStarWin = 3;
+        }
+        else if (currentLevel == "Level2_GabiLevel")
+        {
+            totalPoints = 20;
+            threeStarWin = 6;
+            twoStarWin = 4;
+        }
+        else if (currentLevel == "Level3")
+        {
+            totalPoints = 15;
+            threeStarWin = 5;
+            twoStarWin = 3;
+        }
+        else if (currentLevel == "Level4")
+        {
+            totalPoints = 15;
+            threeStarWin = 5;
+            twoStarWin = 3;
+        }
+        else
+        {
+            totalPoints = 15;
+            threeStarWin = 5;
+            twoStarWin = 3;
+        }
+
         pointsText.text = ("Points: " + totalPoints);
         car1Points = 5;
         car2Points = 4;
@@ -175,13 +212,14 @@ public class MainGame : MonoBehaviour
         Debug.Log(AliveFrogs.Count);
         if (AliveFrogs.Count == 0)
         {
-            // not sure about the point limits I set here
-            if (totalPoints >= threeStarPoints)
+            backgroundMusic.Stop();
+            winSound.SetActive(true);
+            if (totalPoints >= threeStarWin)
             {
                 panel3PointsText.text = ("Points leftover: " + totalPoints);
                 PlayerPrefs.SetInt("level"+level+"Stars", 3);
                 threeStarWinPanel.SetActive(true);
-            } else if (totalPoints >= twoStarPoints)
+            } else if (totalPoints >= twoStarWin)
             {
                 panel2PointsText.text = ("Points leftover: " + totalPoints);
                 twoStarWinPanel.SetActive(true);
@@ -260,8 +298,10 @@ public class MainGame : MonoBehaviour
     }
 
     public void showLosePanel()
-    {
+    {   
+        backgroundMusic.Stop();
         losePanel.SetActive(true);
+        loseSound.SetActive(true);
     }
 
 }
