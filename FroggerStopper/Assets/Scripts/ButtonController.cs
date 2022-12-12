@@ -90,6 +90,11 @@ public class ButtonController : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void RestartButtonClicked()
+    {
+        SceneManager.LoadScene(controller.GetComponent<MainGame>().currentLevel);
+    }
+
     public void HowButtonClicked()
     {
         SceneManager.LoadScene(1); // load instructions scene
