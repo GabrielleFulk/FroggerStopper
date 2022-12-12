@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5982104693555659258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.375262, y: -2.4318657, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -123,6 +123,9 @@ MonoBehaviour:
   frogger: {fileID: 5982104693555659258}
   GameController: {fileID: 0}
   animator: {fileID: 5982104693555659257}
+  moving: 0
+  FrogSpeed: 1
+  enemyPrefabs: []
 --- !u!61 &5982104693555659261
 BoxCollider2D:
   m_ObjectHideFlags: 0
