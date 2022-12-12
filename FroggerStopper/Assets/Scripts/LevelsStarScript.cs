@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LevelsStarScript : MonoBehaviour
 {
-    int[] levelStars;
+    string[] starValues = { "levelOneStars", "levelTwoStars", "levelThreeStars", "LevelFourStars" };
+    public GameObject[] levelStars;
     public GameObject lvlOneNoStars;
     public GameObject lvlOneOneStars;
     public GameObject lvlOneTwoStars;
@@ -12,28 +13,39 @@ public class LevelsStarScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("levelOneStars") == 0)
+        int m = 0;
+        for (int i = 0; i < 2; i++) 
         {
-            lvlOneNoStars.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("levelOneStars") == 1)
-        {
-            lvlOneNoStars.SetActive(false);
-            lvlOneOneStars.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("levelOneStars") == 2)
-        {
-            lvlOneNoStars.SetActive(false);
-            lvlOneOneStars.SetActive(false);
-            lvlOneTwoStars.SetActive(true);
-        }
-        if (PlayerPrefs.GetInt("levelOneStars") == 3)
-        {
-            lvlOneNoStars.SetActive(false);
-            lvlOneOneStars.SetActive(false);
-            lvlOneTwoStars.SetActive(false);
-            lvlOneThreeStars.SetActive(true);
-        }
+            GameObject noStars, oneStars, twoStars, threeStars;
+            noStars  = levelStars[m];
+            oneStars = levelStars[m+1];
+            twoStars = levelStars[m+2];
+            threeStars = levelStars[m+3];
+            if (PlayerPrefs.GetInt(starValues[i]) == 0)
+            {
+                noStars.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt(starValues[i]) == 1)
+            {
+                noStars.SetActive(false);
+                oneStars.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt(starValues[i]) == 2)
+            {
+                noStars.SetActive(false);
+                oneStars.SetActive(false);
+                twoStars.SetActive(true);
+            }
+            if (PlayerPrefs.GetInt(starValues[i]) == 3)
+            {
+                noStars.SetActive(false);
+                oneStars.SetActive(false);
+                twoStars.SetActive(false);
+                threeStars.SetActive(true);
+                Debug.Log("3");
+            }
+            m += 4;
+        }/**/
     }
 
     // Update is called once per frame

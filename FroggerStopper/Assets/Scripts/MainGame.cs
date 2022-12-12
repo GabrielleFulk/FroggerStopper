@@ -84,6 +84,7 @@ public class MainGame : MonoBehaviour
     public string currentLevel;
     bool gameStarted;
 
+    public string level;
 
 
     // Start is called before the first frame update
@@ -216,18 +217,18 @@ public class MainGame : MonoBehaviour
             if (totalPoints >= threeStarWin)
             {
                 panel3PointsText.text = ("Points leftover: " + totalPoints);
-                PlayerPrefs.SetInt("levelOneStars", 3);
+                PlayerPrefs.SetInt("level"+level+"Stars", 3);
                 threeStarWinPanel.SetActive(true);
             } else if (totalPoints >= twoStarWin)
             {
                 panel2PointsText.text = ("Points leftover: " + totalPoints);
                 twoStarWinPanel.SetActive(true);
-                if (PlayerPrefs.GetInt("levelOneStars")<2) PlayerPrefs.SetInt("levelOneStars", 2);
+                if (PlayerPrefs.GetInt("level"+level+"Stars") <2) PlayerPrefs.SetInt("level"+level+"Stars", 2);
             } else
             {
                 panel1PointsText.text = ("Points leftover: " + totalPoints);
                 oneStarWinPanel.SetActive(true);
-                if (PlayerPrefs.GetInt("levelOneStars") < 1) PlayerPrefs.SetInt("levelOneStars", 1);
+                if (PlayerPrefs.GetInt("level"+level+"Stars") < 1) PlayerPrefs.SetInt("level"+level+"Stars", 1);
             }
         }
     }
