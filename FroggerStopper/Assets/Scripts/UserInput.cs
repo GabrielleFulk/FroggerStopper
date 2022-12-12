@@ -94,7 +94,7 @@ public class UserInput : MonoBehaviour
         if(!busy)
         {
             car.GetComponent<SpriteRenderer>().sprite = redCar;
-            car.GetComponent<CarMovements>().points = 3;
+            car.GetComponent<CarMovements>().points = 5;
             car.GetComponent<CarMovements>().carSpeed = 2;
             currentCar = Instantiate(car, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f), Quaternion.identity);
             busy = true;
@@ -118,7 +118,7 @@ public class UserInput : MonoBehaviour
         if (!busy)
         {
             car.GetComponent<SpriteRenderer>().sprite = dumpTruck;
-            car.GetComponent<CarMovements>().points = 5;
+            car.GetComponent<CarMovements>().points = 6;
             car.GetComponent<CarMovements>().carSpeed = 1;
             currentCar = Instantiate(car, new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0.0f), Quaternion.identity);
             busy = true;

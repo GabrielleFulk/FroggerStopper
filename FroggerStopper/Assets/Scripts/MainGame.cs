@@ -76,12 +76,16 @@ public class MainGame : MonoBehaviour
 
     bool gameStarted;
 
+    public int twoStarPoints;
+    public int threeStarPoints;
+
+    public string level;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        totalPoints = 15; //set starting points based on the level
+        //totalPoints = 15; //set starting points based on the level
         pointsText.text = ("Points: " + totalPoints);
         car1Points = 5;
         car2Points = 4;
@@ -172,21 +176,21 @@ public class MainGame : MonoBehaviour
         if (AliveFrogs.Count == 0)
         {
             // not sure about the point limits I set here
-            if (totalPoints >= 5)
+            if (totalPoints >= threeStarPoints)
             {
                 panel3PointsText.text = ("Points leftover: " + totalPoints);
-                PlayerPrefs.SetInt("levelOneStars", 3);
+                PlayerPrefs.SetInt("level"+level+"Stars", 3);
                 threeStarWinPanel.SetActive(true);
-            } else if (totalPoints >= 3)
+            } else if (totalPoints >= twoStarPoints)
             {
                 panel2PointsText.text = ("Points leftover: " + totalPoints);
                 twoStarWinPanel.SetActive(true);
-                if (PlayerPrefs.GetInt("levelOneStars")<2) PlayerPrefs.SetInt("levelOneStars", 2);
+                if (PlayerPrefs.GetInt("level"+level+"Stars") <2) PlayerPrefs.SetInt("level"+level+"Stars", 2);
             } else
             {
                 panel1PointsText.text = ("Points leftover: " + totalPoints);
                 oneStarWinPanel.SetActive(true);
-                if (PlayerPrefs.GetInt("levelOneStars") < 1) PlayerPrefs.SetInt("levelOneStars", 1);
+                if (PlayerPrefs.GetInt("level"+level+"Stars") < 1) PlayerPrefs.SetInt("level"+level+"Stars", 1);
             }
         }
     }
