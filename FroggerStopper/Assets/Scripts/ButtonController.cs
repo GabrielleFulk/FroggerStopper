@@ -92,6 +92,7 @@ public class ButtonController : MonoBehaviour
 
     public void LevelTwoButtonClicked()
     {
+        Debug.Log("in level two btn clicked");
         SceneManager.LoadScene("Level2");
     }
 
