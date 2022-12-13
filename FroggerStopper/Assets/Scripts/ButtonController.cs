@@ -8,6 +8,7 @@ public class ButtonController : MonoBehaviour
 {
     private CarMovements[] allCarScripts;
     private FrogMovement[] allFrogScripts;
+    private FastFrogMovement[] allFastFrogScripts;
     public Button PlayButton;
     public Button Car1Button;
     public Button Car2Button;
@@ -26,8 +27,6 @@ public class ButtonController : MonoBehaviour
 
     void Start()
     {
-       
-        Debug.Log("hit");
         controller = GameObject.Find("GameController");
         Camera = GameObject.Find("Main Camera");
         soundOn = true;
@@ -43,7 +42,12 @@ public class ButtonController : MonoBehaviour
         Car3Button.interactable = false;
         controller.GetComponent<MainGame>().StartCars();        
         allFrogScripts = FindObjectsOfType<FrogMovement>();
+        allFastFrogScripts = FindObjectsOfType<FastFrogMovement>();
         foreach(FrogMovement frog in allFrogScripts)
+        {
+            frog.TriggerFrogStart();
+        }
+        foreach(FastFrogMovement frog in allFastFrogScripts)
         {
             frog.TriggerFrogStart();
         }
@@ -93,6 +97,16 @@ public class ButtonController : MonoBehaviour
     public void LevelTwoButtonClicked()
     {
         SceneManager.LoadScene("Level2");
+    }
+
+    public void LevelThreeButtonClicked()
+    {
+        SceneManager.LoadScene("Level3");
+    }
+
+    public void LevelFourButtonClicked()
+    {
+        SceneManager.LoadScene("Level4");
     }
 
     public void RestartButtonClicked()

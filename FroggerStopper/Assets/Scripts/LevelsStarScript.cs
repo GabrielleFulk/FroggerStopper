@@ -57,7 +57,7 @@ public class LevelsStarScript : MonoBehaviour
         }
         else if (PlayerPrefs.GetInt("levelOneStars") == 1)
         {
-            Debug.Log("star");
+            // Debug.Log("star");
             lvlOneOneStars.SetActive(true);
         }
     }

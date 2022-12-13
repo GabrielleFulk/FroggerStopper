@@ -392,6 +392,12 @@ MonoBehaviour:
   Car1Button: {fileID: 0}
   Car2Button: {fileID: 0}
   Car3Button: {fileID: 0}
+  showFrogButton: {fileID: 0}
+  Camera: {fileID: 0}
+  soundOn: 0
+  soundButton: {fileID: 0}
+  soundOnIcon: {fileID: 0}
+  soundOffIcon: {fileID: 0}
   controller: {fileID: 0}
   losePanel: {fileID: 0}
 --- !u!1 &560490411
@@ -538,8 +544,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3a1d8fa1daf51924aae07f62fae2894d, type: 2}
+  m_sharedMaterial: {fileID: -462285744765874757, guid: 3a1d8fa1daf51924aae07f62fae2894d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -833,8 +839,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3a1d8fa1daf51924aae07f62fae2894d, type: 2}
+  m_sharedMaterial: {fileID: -462285744765874757, guid: 3a1d8fa1daf51924aae07f62fae2894d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -974,8 +980,8 @@ MonoBehaviour:
     there will be a star rating based on the number of points used. The less poinsts
     that are used, the more stars are awarded"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3a1d8fa1daf51924aae07f62fae2894d, type: 2}
+  m_sharedMaterial: {fileID: -462285744765874757, guid: 3a1d8fa1daf51924aae07f62fae2894d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

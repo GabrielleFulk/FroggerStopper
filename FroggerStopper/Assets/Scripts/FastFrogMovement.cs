@@ -38,10 +38,10 @@ public class FastFrogMovement : MonoBehaviour
 
     void Start()
     {
-        moving = true;
+
         rb = GetComponent<Rigidbody2D>();
         GameController = GameObject.Find("GameController");
-        StartCoroutine(Frogger());
+       
         // You can change to the coordinate accordingly
         float xPos1 = spawnOne.transform.position.x;
         float yPos1 = spawnOne.transform.position.y;
@@ -70,14 +70,15 @@ public class FastFrogMovement : MonoBehaviour
             animator.SetBool("Jump", false);
         }
         
-        if (-1 <= enemyPrefabs[0].position.y && enemyPrefabs[0].position.y <= 0)
+        if (-5.3 <= transform.position.y && transform.position.y <=-4.13)
             {
                     count = count + 1;
                     Debug.Log("Count: " + count);
                     if (count % 2 == 1)
-                        enemyPrefabs[0].MovePosition(pos);
+                        transform.position = pos;
                     if (count % 2 == 0)
-                        enemyPrefabs[0].MovePosition(pos2);
+                        transform.position = pos;
+                    
                
             }
     }
@@ -91,10 +92,10 @@ public class FastFrogMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Car" && moving)
+        if (collision.gameObject.tag == "Car" && moving && collision.GetComponent<CarMovements>().getGo())
         {
             moving = false;
-            GameController.GetComponent<MainGame>().RemoveFrog(frogger);
+            GameController.GetComponent<MainGame>().RemoveFrog(gameObject);
             animator.SetBool("Jump", false);
             Destroy(gameObject);
         }
@@ -118,16 +119,17 @@ public class FastFrogMovement : MonoBehaviour
 
     private IEnumerator Lost()
     {
-        
+
         while (true)
         {
             if (gameObject.transform.position.y <= 5)
             {
                 yield return new WaitForSeconds(.5f);
             }
-            else {
-            
-                SceneManager.LoadScene("LostScene");// FIX AND REPLACE WITH RESTET UI
+            else
+            {
+
+                GameController.GetComponent<MainGame>().showLosePanel();
                 yield return null;
             }
         }

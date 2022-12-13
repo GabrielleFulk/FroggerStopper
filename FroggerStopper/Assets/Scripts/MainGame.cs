@@ -98,7 +98,7 @@ public class MainGame : MonoBehaviour
             threeStarWin = 5;
             twoStarWin = 3;
         }
-        else if (currentLevel == "Level2_GabiLevel")
+        else if (currentLevel == "level2")
         {
             totalPoints = 20;
             threeStarWin = 6;
@@ -106,17 +106,17 @@ public class MainGame : MonoBehaviour
         }
         else if (currentLevel == "Level3")
         {
-            totalPoints = 15;
+            totalPoints = 20;
             threeStarWin = 5;
             twoStarWin = 3;
         }
         else if (currentLevel == "Level4")
         {
-            totalPoints = 15;
-            threeStarWin = 5;
-            twoStarWin = 3;
+            totalPoints = 36;
+            threeStarWin = 12;
+            twoStarWin = 6;
         }
-        else
+        else //just in case a level isn't able to be detected for some reason
         {
             totalPoints = 15;
             threeStarWin = 5;
