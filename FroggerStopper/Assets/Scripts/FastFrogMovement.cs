@@ -38,7 +38,7 @@ public class FastFrogMovement : MonoBehaviour
 
     void Start()
     {
-        moving = false;
+
         rb = GetComponent<Rigidbody2D>();
         GameController = GameObject.Find("GameController");
        
@@ -70,7 +70,7 @@ public class FastFrogMovement : MonoBehaviour
             animator.SetBool("Jump", false);
         }
         
-        if (-5.3 <= transform.position.y && transform.position.y <=0)
+        if (-5.3 <= transform.position.y && transform.position.y <=-4.13)
             {
                     count = count + 1;
                     Debug.Log("Count: " + count);
@@ -78,6 +78,7 @@ public class FastFrogMovement : MonoBehaviour
                         transform.position = pos;
                     if (count % 2 == 0)
                         transform.position = pos;
+                    
                
             }
     }
