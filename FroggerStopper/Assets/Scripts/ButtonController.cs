@@ -27,8 +27,6 @@ public class ButtonController : MonoBehaviour
 
     void Start()
     {
-       
-        Debug.Log("hit");
         controller = GameObject.Find("GameController");
         Camera = GameObject.Find("Main Camera");
         soundOn = true;
@@ -99,6 +97,16 @@ public class ButtonController : MonoBehaviour
     public void LevelTwoButtonClicked()
     {
         SceneManager.LoadScene("Level2");
+    }
+
+    public void LevelThreeButtonClicked()
+    {
+        SceneManager.LoadScene("Level3");
+    }
+
+    public void LevelFourButtonClicked()
+    {
+        SceneManager.LoadScene("Level4");
     }
 
     public void RestartButtonClicked()
