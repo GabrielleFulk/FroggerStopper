@@ -98,7 +98,7 @@ public class MainGame : MonoBehaviour
             threeStarWin = 5;
             twoStarWin = 3;
         }
-        else if (currentLevel == "Level2")
+        else if (currentLevel == "level2")
         {
             totalPoints = 20;
             threeStarWin = 6;
