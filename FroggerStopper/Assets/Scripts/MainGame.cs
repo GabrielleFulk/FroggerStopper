@@ -112,9 +112,9 @@ public class MainGame : MonoBehaviour
         }
         else if (currentLevel == "Level4")
         {
-            totalPoints = 15;
-            threeStarWin = 5;
-            twoStarWin = 3;
+            totalPoints = 36;
+            threeStarWin = 12;
+            twoStarWin = 6;
         }
         else //just in case a level isn't able to be detected for some reason
         {
